@@ -1,0 +1,28 @@
+{
+  "name": "popkit",
+  "version": "0.1.1",
+  "description": "An unstyled floating panel for React that opens under its trigger",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null; npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "typescript": "^5"
+  }
+}
