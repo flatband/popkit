@@ -5,8 +5,8 @@ pickers, small menus.
 
 - Click the trigger to toggle; click outside or press Escape to close.
 - Escape hands focus back to the trigger.
-- Fades in and out (opacity + blur), and stays out of the way while closed:
-  not clickable, not focusable, not read by screen readers.
+- No animation: the panel appears and disappears instantly. Closed, it's
+  `display: none`: not clickable, not focusable, not read by screen readers.
 - Sets `aria-expanded`, `aria-controls` and `aria-haspopup` for you.
 - No styles beyond placement. Size, colours and spacing are yours.
 
@@ -58,7 +58,6 @@ alongside `props` if the trigger should look different while open.
 | `align` | `"start"` | Line the panel up with the trigger's left (`"start"`) or right (`"end"`) edge. |
 | `role` | none | `"menu"`, `"listbox"` or `"dialog"`. Also sets the trigger's `aria-haspopup`. |
 | `className` | none | Classes for the panel. |
-| `duration` | `350` | Fade length in ms. `0` turns it off. |
 
 ## Versioning
 

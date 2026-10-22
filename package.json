@@ -1,6 +1,6 @@
 {
   "name": "popkit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An unstyled floating panel for React that opens under its trigger",
   "type": "module",
   "exports": {

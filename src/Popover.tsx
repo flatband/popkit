@@ -23,8 +23,6 @@ export type PopoverProps = {
   role?: PopoverRole;
   /** Classes for the panel: size, spacing, colours. Positioning is handled here. */
   className?: string;
-  /** Fade length in milliseconds; 0 turns it off. */
-  duration?: number;
 };
 
 /**
@@ -32,9 +30,9 @@ export type PopoverProps = {
  * a click anywhere outside or Escape closes it, and Escape hands focus back
  * to the trigger.
  *
- * Unstyled apart from placement and the fade. The panel stays mounted while
- * closed, hidden with `visibility`, so it can fade out as well as in — and a
- * hidden panel can't be clicked, tabbed into, or read by a screen reader.
+ * Unstyled apart from placement, and not animated: the panel simply appears
+ * and disappears. Closed, it's `display: none` — so it can't be clicked,
+ * tabbed into, or read by a screen reader.
  */
 export default function Popover({
   trigger,
@@ -42,7 +40,6 @@ export default function Popover({
   align = "start",
   role,
   className,
-  duration = 350,
 }: PopoverProps) {
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
@@ -75,12 +72,9 @@ export default function Popover({
     top: "100%",
     [align === "end" ? "right" : "left"]: 0,
     zIndex: 50,
-    opacity: open ? 1 : 0,
-    filter: open ? "blur(0px)" : "blur(10px)",
-    // Visibility flips at once on open, but only after the fade on close —
-    // otherwise the panel would vanish before it had faded.
-    visibility: open ? "visible" : "hidden",
-    transition: `opacity ${duration}ms, filter ${duration}ms, visibility 0s linear ${open ? 0 : duration}ms`,
+    // Inline, so a display class on the panel (flex, grid) can't override it
+    // while closed. Open, the class's display applies as usual.
+    display: open ? undefined : "none",
   };
 
   return (
